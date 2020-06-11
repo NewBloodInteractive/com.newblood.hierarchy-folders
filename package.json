@@ -1,0 +1,10 @@
+{
+  "name": "com.newblood.hierarchy-folders",
+  "displayName": "Scene Hierarchy Folders",
+  "description": "Adds support for folders in the scene hierarchy.",
+  "version": "1.0.0",
+  "type": "library",
+  "dependencies": {
+    "com.newblood.hierarchy-callbacks": "1.0.0"
+  }
+}

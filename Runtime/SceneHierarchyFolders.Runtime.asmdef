@@ -1,0 +1,16 @@
+{
+    "name": "SceneHierarchyFolders.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:58641f11cf6115643b624bd8ac68ba79"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
