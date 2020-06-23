@@ -2,13 +2,10 @@
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 #if UNITY_EDITOR
-using System;
-using System.Reflection;
 using NewBlood.Editor;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEditor.Experimental;
-using Object = UnityEngine.Object;
 #endif
 
 namespace NewBlood
@@ -22,18 +19,19 @@ namespace NewBlood
 #endif
     {
     #if UNITY_EDITOR
-        static readonly Action<Object, Texture2D> SetIconForObject = (Action<Object, Texture2D>)typeof(EditorGUIUtility)
-            .GetMethod("SetIconForObject", BindingFlags.NonPublic | BindingFlags.Static)
-            .CreateDelegate(typeof(Action<Object, Texture2D>));
-
         static Texture2D openIcon;
         static Texture2D closedIcon;
 
         [InitializeOnLoadMethod]
         static void EditorInitialize()
         {
-            openIcon   = EditorGUIUtility.FindTexture(EditorResources.emptyFolderIconName);
+            openIcon   = EditorGUIUtility.FindTexture("FolderOpened Icon");
             closedIcon = EditorGUIUtility.FindTexture(EditorResources.folderIconName);
+
+            if (!openIcon)
+            {
+                openIcon = EditorGUIUtility.FindTexture(EditorResources.emptyFolderIconName);
+            }
         }
 
         [MenuItem("GameObject/Create Folder", false, 0)]
@@ -43,7 +41,6 @@ namespace NewBlood
             GameObjectUtility.SetParentAndAlign(folder.gameObject, Selection.activeGameObject);
             Undo.RegisterCreatedObjectUndo(folder, "Create Folder");
             Selection.activeGameObject = folder;
-            SetIconForObject(folder, closedIcon);
         }
 
         public void OnSceneHierarchyGUI(TreeViewItem item, Rect selectionRect, bool expanded)
