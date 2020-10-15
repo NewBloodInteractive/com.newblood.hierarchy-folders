@@ -43,7 +43,7 @@ namespace NewBlood
             Selection.activeGameObject = folder;
         }
 
-        public void OnSceneHierarchyGUI(TreeViewItem item, Rect selectionRect, bool expanded)
+        void ISceneHierarchyCallbackReceiver.OnSceneHierarchyGUI(TreeViewItem item, Rect selectionRect, bool expanded)
         {
             item.icon = expanded ? openIcon : closedIcon;
         }
