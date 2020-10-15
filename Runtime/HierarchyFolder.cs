@@ -76,7 +76,12 @@ namespace NewBlood
                             children.Add(folder.transform.GetChild(i));
 
                         foreach (var child in children)
+                        {
+                            if (!folder.gameObject.activeSelf)
+                                child.gameObject.SetActive(false);
+
                             child.SetParent(folder.transform.parent);
+                        }
 
                         Destroy(folder.gameObject);
                         children.Clear();
